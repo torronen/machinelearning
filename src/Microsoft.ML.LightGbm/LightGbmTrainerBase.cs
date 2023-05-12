@@ -274,6 +274,12 @@ namespace Microsoft.ML.Trainers.LightGbm
                 res[GetOptionName(nameof(CategoricalSmoothing))] = CategoricalSmoothing;
                 res[GetOptionName(nameof(L2CategoricalRegularization))] = L2CategoricalRegularization;
 
+                res["gpu_use_dp"] = false;
+                res["device_type"] = "gpu";
+                res["gpu_platform_id"] = 0;
+                res["gpu_device_id"] = 0;
+
+
                 return res;
             }
         }

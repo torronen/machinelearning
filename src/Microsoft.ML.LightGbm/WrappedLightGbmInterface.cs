@@ -33,7 +33,7 @@ namespace Microsoft.ML.Trainers.LightGbm
             LeafIndex = 2,
         }
 
-        private const string DllName = "lib_lightgbm";
+        private const string DllName = "lib_lightgbm_gpu";
 
         #region API Array
 
