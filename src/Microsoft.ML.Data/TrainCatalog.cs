@@ -102,7 +102,10 @@ namespace Microsoft.ML
             // spawn off a separate host per fold in that case.
             foreach (var split in DataOperationsCatalog.CrossValidationSplit(Environment, data, splitColumn, numFolds))
             {
-                var model = estimator.Fit(split.TrainSet);
+                var trainSetWithoutSamplingKey = ColumnSelectingTransformer.CreateDrop(Environment, split.TrainSet, samplingKeyColumn);
+                var testSetWithoutSamplingKey = ColumnSelectingTransformer.CreateDrop(Environment, split.TestSet, samplingKeyColumn);
+
+                var model = estimator.Fit(trainSetWithoutSamplingKey);
                 IDataView scoredTest;
 
                 if (IsCastableToTransformerChainOfITransformer(model))
