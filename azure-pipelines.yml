@@ -17,6 +17,13 @@ variables:
 steps:
 - task: NuGetToolInstaller@1
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/*'
+    feedsToUse: 'select'
+    vstsFeed: 'https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-libraries/nuget/v3/index.json'
+
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
