@@ -20,7 +20,9 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
+- task: CmdLine@2
+  inputs:
+    script: 'build.cmd -configuration Release /p:TargetArchitecture=x64'
 
 
 - task: VSBuild@1
